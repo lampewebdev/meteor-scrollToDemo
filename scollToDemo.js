@@ -21,11 +21,9 @@ if (Meteor.isClient) {
 
   Template.something.events({
     "click p": function(e,t){
+      blup = $(t.firstNode.parentElement).find("p");
+      window.scrollTo( 0, $(blup[blup.length-1]).offset().top );
       Session.set("somethingEditable", true);
-
-      console.log(t);
-      // window.scrollTo( 0, $(blup[blup.length-1]).offset().top );
-
     }
   });
 }
