@@ -21,9 +21,13 @@ if (Meteor.isClient) {
 
   Template.something.events({
     "click p": function(e,t){
-      blup = $(t.firstNode.parentElement).find("p");
-      window.scrollTo( 0, $(blup[blup.length-1]).offset().top );
+      var parentElement = t.firstNode.parentElement;
       Session.set("somethingEditable", true);
+      Tracker.afterFlush(function () {
+          blup = $(parentElement).find("textarea:last");
+          window.scrollTo(0, blup.offset().top);
+
+      });
     }
   });
 }
