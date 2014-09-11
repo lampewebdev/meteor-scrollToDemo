@@ -1,0 +1,25 @@
+<head>
+  <title>scollToDemo</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> somethings}}
+</body>
+
+<template name="somethings">
+  <div class="somethings">
+    {{#each somethings}}
+      {{> something}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="something">
+  {{#if editable}}
+    <div><textarea class="somethingEdit">{{someText}}</textarea></div>
+  {{else}}
+    <p class="something">{{someText}}</p>
+  {{/if}}
+</template>
